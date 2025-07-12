@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Question Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .vote-btn {
+      cursor: pointer;
+      font-size: 20px;
+      margin: 0 10px;
+    }
+    .answer-box {
+      margin-top: 40px;
+    }
+    .answer-card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">QuestionHub</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5 pt-4">
+    <!-- Question Title -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">What is the difference between HTML and HTML5?</h3>
+        <p class="card-text">Can someone explain the key differences between HTML and HTML5 in terms of new features and compatibility?</p>
+        <div class="d-flex align-items-center">
+          <span class="vote-btn text-success">&#x25B2;</span> <!-- Up arrow -->
+          <span>12</span>
+          <span class="vote-btn text-danger">&#x25BC;</span> <!-- Down arrow -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Answers Section -->
+    <h4>Answers</h4>
+
+    <div class="card answer-card">
+      <div class="card-body">
+        <p>HTML5 introduces new elements like &lt;video&gt;, &lt;audio&gt;, and &lt;canvas&gt; that were not present in HTML. It also supports local storage, offline apps, and semantic tags like &lt;article&gt; and &lt;section&gt;.</p>
+        <div class="text-muted small">Answered by Alice | 5 votes</div>
+      </div>
+    </div>
+
+    <div class="card answer-card">
+      <div class="card-body">
+        <p>Unlike HTML, HTML5 supports drag and drop, new form input types, and better error handling in browsers.</p>
+        <div class="text-muted small">Answered by Bob | 3 votes</div>
+      </div>
+    </div>
+
+    <!-- Answer Submission Box -->
+    <div class="answer-box">
+      <h5>Your Answer</h5>
+      <form>
+        <div class="mb-3">
+          <textarea class="form-control" rows="5" placeholder="Write your answer here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Post Answer</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
