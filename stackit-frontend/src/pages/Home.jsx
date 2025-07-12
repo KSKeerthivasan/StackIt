@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Home.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Link } from 'react-router-dom';
+
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,7 +60,8 @@ function Home() {
       {/* Navbar */}
       <nav className="navbar d-flex justify-content-between mb-4">
         <div className="navbar-brand text-warning fw-bold fs-3">StackIt</div>
-        <a href="/login" className="btn btn-outline-custom">Login</a>
+        <Link to="/login" className="btn btn-outline-custom">Login</Link>
+
       </nav>
 
       {/* Ask and Search */}
