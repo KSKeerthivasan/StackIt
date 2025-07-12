@@ -1,26 +1,37 @@
-// src/pages/Login.jsx
 import React from 'react';
+import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 function Login() {
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
-      <div className="card p-4" style={{ width: '300px', backgroundColor: '#2d2d2d' }}>
-        <h4 className="text-center mb-3" style={{ color: '#facc15' }}>Login</h4>
+    <div className="login-container d-flex justify-content-center align-items-center vh-100">
+      <div className="login-box p-4 rounded">
+        <h2 className="text-center text-warning mb-4">Login</h2>
         <form>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email address</label>
-            <input type="email" className="form-control bg-dark text-white" id="email" required />
+            <label htmlFor="email" className="form-label text-light">Email address</label>
+            <input
+              type="email"
+              className="form-control bg-dark text-white border-secondary"
+              id="email"
+              placeholder="Enter email"
+            />
           </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" className="form-control bg-dark text-white" id="password" required />
+          <div className="mb-4">
+            <label htmlFor="password" className="form-label text-light">Password</label>
+            <input
+              type="password"
+              className="form-control bg-dark text-white border-secondary"
+              id="password"
+              placeholder="Enter password"
+            />
           </div>
-          <button type="submit" className="btn btn-warning w-100">Login</button>
+          <button type="submit" className="btn btn-warning w-100 fw-bold">Login</button>
         </form>
-        <p className="text-center mt-3">
-          <a href="/signup" className="text-warning">Sign Up</a>
-        </p>
+        <div className="text-center mt-3">
+          <Link to="/register" className="text-warning text-decoration-underline">Sign Up</Link>
+        </div>
       </div>
     </div>
   );
