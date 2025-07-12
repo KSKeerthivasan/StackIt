@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask a Question - StackIt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: '#description',
+      height: 300,
+      menubar: false,
+      plugins: [
+        'advlist autolink lists link image charmap preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table paste code help wordcount'
+      ],
+      toolbar: 'undo redo | bold italic underline | bullist numlist | alignleft aligncenter alignright alignjustify | link image | code',
+      content_style: 'body { background-color: #1a1a1a; color: white; font-family: Segoe UI, sans-serif; }'
+    });
+  </script>
+  <style>
+    :root {
+      --bg-color: #1a1a1a;
+      --primary-yellow: #facc15;
+      --gray: #2d2d2d;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      background-color: var(--gray);
+      padding: 1rem 2rem;
+    }
+
+    .navbar-brand {
+      color: var(--primary-yellow);
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .form-wrapper {
+      max-width: 700px;
+      margin: 3rem auto;
+      background-color: var(--gray);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.1);
+    }
+
+    .form-label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .form-control,
+    #description {
+      background-color: #111;
+      border: 1px solid #444;
+      color: white;
+    }
+
+    .form-control:focus,
+    #description:focus {
+      border-color: var(--primary-yellow);
+      box-shadow: none;
+    }
+
+    .btn-yellow {
+      background-color: var(--primary-yellow);
+      color: var(--bg-color);
+      width: 100%;
+      border: none;
+    }
+
+    .btn-yellow:hover {
+      background-color: #eab308;
+    }
+
+    .form-text {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar d-flex justify-content-between">
+    <div class="navbar-brand">StackIt</div>
+    <div class="nav-icons">
+      <a href="index.html" class="text-white text-decoration-none">Home</a>
+      <i class="fas fa-bell text-white"></i>
+      <img src="https://i.pravatar.cc/40" class="rounded-circle" alt="Profile">
+    </div>
+  </nav>
+
+  <div class="form-wrapper">
+    <h3 class="mb-4">Ask a New Question</h3>
+    <form onsubmit="return validateForm()">
+      <div class="mb-4">
+        <label class="form-label" for="title">Title</label>
+        <input type="text" id="title" class="form-control" placeholder="Enter question title..." required minlength="15">
+        <div class="form-text">Minimum 15 characters. Be specific and clear.</div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label" for="description">Description</label>
+        <textarea id="description"></textarea>
+        <div class="form-text">Include what you've tried, code examples, and details.</div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label" for="tags">Tags</label>
+        <input type="text" id="tags" class="form-control" placeholder="e.g., javascript, react, sql" required>
+        <div class="form-text">Add 1 or more relevant tags separated by commas.</div>
+      </div>
+
+      <button type="submit" class="btn btn-yellow">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      const title = document.getElementById('title').value.trim();
+      const tags = document.getElementById('tags').value.trim();
+
+      if (title.length < 15) {
+        alert("Title must be at least 15 characters.");
+        return false;
+      }
+
+      if (!tags.includes(',')) {
+        alert("Please enter at least one tag separated by commas.");
+        return false;
+      }
+
+      alert("Your question has been submitted successfully!");
+      return true;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Please login or sign up to ask a question.</p>
+        <a href="login.html" class="btn btn-warning w-100 mb-2">Login</a>
+        <a href="signup.html" class="btn btn-outline-light w-100">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const isAuthenticated = false; // Change to true if user is logged in
+
+  document.querySelector("form").addEventListener("submit", function(event) {
+    if (!isAuthenticated) {
+      event.preventDefault();
+      const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+      loginModal.show();
+    }
+  });
+</script>
+
+</body>
+</html>
